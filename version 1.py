@@ -22,23 +22,6 @@ def speak(audioo):
     engine.runAndWait()
 
 
-def tempinput():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        r.pause_threshold = 1
-        audio = r.listen(source)
-        Q_order=""
-
-        try:
-            print('trying')
-            Q_order = r.recognize_google(audio, language='en-in')
-            print(f"{Q_order}\n")
-
-        except Exception as e:
-            print('k')
-    return Q_order.lower()
-
-
 if os.path.isfile("username.txt") is False:
     speak("sir what is your name")
     Q_order=str(input("Enter your name"))
@@ -82,18 +65,7 @@ def voice_input():
             "pass"
 
     return Q_order.lower()
-def get_audio():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-        r.adjust_for_ambient_noise(source)
-        said = ""
-        try:
-            said = r.recognize_google(audio)
-            print(said)
-        except Exception as e:
-            print("Exception: " + str(e))
-    return said.lower()
+
 
 
 if __name__ == "__main__":
